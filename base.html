@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="{{ url_for('static', filename = 'scripts/registration.js') }}"></script>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename = 'css/reg.css') }}"> 
+    {% if title %}
+    <title>{{title}} - Microblog</title>
+    {% else %}
+    <title>Welcome to Microblog</title>
+    {% endif %}
+  </head>
+  <body>
+    <div class="navbar"> Microblog
+          {% if session['username'] %}  
+          <a href="{{ url_for('index') }}">Logout</a>
+          ><a href="{{url_for('studentform')}}">Student Form</a>
+          ><a href="{{url_for('menu')}}">Menu</a>
+          <p>Welcome, {{session['username']}}</p>
+          {% endif %}
+    </div>
+    <hr>  
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <form method="post" enctype="multipart/form-data">
+    <div class="sregister">
+
+    <h1 style="text-align:center"> Student Registration Form</h1>
+    <h5 style="text-align:center"> Fill details in bold letters. </h5>
+    <hr>
+
+    <label for="firstname"></label>
+    First Name*<input type="text" name="firstname" placeholder="John" value= "{{ user['first name'] }}" required> <br>
+
+    <label for="middlename">Middle Name*</label>
+    <input type="text" name="middlename" placeholder="Smith" value="{{ user['middle name'] }}" required> <br>
+
+    <label for="lastname">Last Name*</label>
+    <input type="text" name="lastname" placeholder="Gunn" value="{{ user['last name'] }}" required> <br>
+
+    <label for="gender">Gender*</label> <br>
+    <input type="radio" name="gender" value="male" required>Male <br>
+    <input type="radio" name="gender" value="female">Female <br>
+    <input type="radio" name="gender" value="other">Other <br> <br>
+
+    <label for="pic">Want to upload new picture?</label> <br> <br>
+    <input type="file" name="picu" accept="image/*" required> <br> <br> 
+    
+    <div class="imgbox">
+    Image uploaded:
+    <img src="http://localhost:5000/image/{{user['image']}}" alt="">
+    <!-- <a href="http://localhost:5000/image/{{user['image']}}">Your Photo</a> -->
+    <!-- <img src="http://localhost:5000/file/user{{filename}}"> -->
+    </div>
+    <hr>
+    <label for="emailid">Email*</label>
+    <input type="text" name="emailid" placeholder="John_Doe@gmail.com" value="{{ user['email id'] }}" required>
+
+    <br>
+    <div class="form-element">
+    <label for="address">Address*</label>
+    <textarea name="address" rows="8" cols="80" required>{{ user['address'] }}</textarea>
+    </div>
+
+    <br>
+    <label for="pnumber">Phone Number*</label>
+    <input type="text" class="phone-number" name="pnumber" id="pnumber" value="{{ user['phone number'] }}">
+
+    <button style="float:center"  type="submit" class="subbutton" value="Submit">Submit</button>
+    </div>
+  </form>
+{% endblock %}

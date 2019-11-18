@@ -1,0 +1,71 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        Login Successful!
+</div> 
+<form method="post">
+    <div>
+        <label for="searchbox"></label>
+        <input type="text" name="searchbox" placeholder="Search...">
+    </div>
+    <div>
+        <button type="submit" name="searchgo" id="searchgo" >GO</button>
+    </div>
+</form>
+<div class="search-results">
+    {% if record_list %}
+    <form method="post">
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email 
+            </th>
+            <th>
+                ID
+            </th>
+            <th>
+                Edit
+            </th>
+        </tr>
+        {% for record in record_list %}
+        <tr>
+            <td>
+                {{ record['first name'] }}  {{ record['middle name'] }} {{ record['last name'] }}
+            </td>
+            <td>
+                {{ record['email id'] }}
+            </td>
+            <td>
+                {{ record['_id'] }}
+            </td>
+            
+            <td>
+                <!-- <button onclick="" type="submit" name="editbtn" id="{{record['_id']}}"  >blah</button> -->
+                <a href="http://localhost:5000/studentupdate/{{record['_id']}}" >edit</a>
+            </td>
+            </form>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+<br>
+<div> 
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p> {{ message }} </p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+<div>
+<footer>
+    <a href="{{url_for('studentform')}}">Want to fill a new form?</a>
+</footer>
+</div>
+{% endblock %}

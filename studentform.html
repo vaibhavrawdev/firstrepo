@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+  
+  <!-- <script type="text/javascript" src="{{ url_for('static', filename = 'scripts/imageuploader.js') }}"></script> -->
+  <form name="myForm" method="post" enctype="multipart/form-data">
+    <div class="sregister">
+    <div>
+    <h1 style="text-align:center"> Student Registration Form</h1>
+    <h5 style="text-align:center"> Fill details in bold letters. </h5>
+    <hr>
+    </div>
+
+    <label for="firstname">First Name*</label>
+    <input type="text" name="firstname" placeholder="John" required> <br>
+
+    <label for="middlename">Middle Name</label>
+    <input type="text" name="middlename" placeholder="Smith" required> <br>
+
+    <label for="lastname">Last Name*</label>
+    <input type="text" name="lastname" placeholder="Gunn" required> <br>
+
+    <label for="gender">Gender*</label> <br>
+    <input type="radio" name="gender" value="male" required >Male<br>
+    <input type="radio" name="gender" value="female">Female <br>
+    <input type="radio" name="gender" value="other">Other <br> <br>
+
+    <label for="pic">Select Picture to Upload*</label> <br>
+    <input type="file" name="pic" accept="image/*" required >
+    
+    <hr>
+    <label for="emailid">Email*</label>
+    <input type="text" name="emailid" placeholder="John_Doe@gmail.com" required>
+
+    <br>
+    <div class="form-element">
+    <label for="address">Address*</label>
+    <textarea name="address" rows="8" cols="80" ></textarea>
+    </div>
+
+    <br>
+    <label for="pnumber">Phone Number*</label>
+    <input type="text" class="phone-number" name="pnumber" id="pnumber" required>
+   
+    <button style="float:center"  type="submit" class="subbutton" id="subbutton" value="Submit">Submit</button> <br> <br>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+        <p> {{ message }} </p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %} 
+  </div>
+  </form>
+{% endblock %}
